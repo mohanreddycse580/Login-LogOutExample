@@ -14,7 +14,6 @@ class MobileHeader extends Component {
           <button
             className="menu-icon"
             type="button"
-            data-open="my-info"
             onClick={this.showSidebar}
           />
           <span className="title-bar-title">{this.props.name} </span>
