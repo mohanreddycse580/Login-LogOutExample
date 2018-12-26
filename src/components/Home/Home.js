@@ -65,11 +65,13 @@ class Home extends Component {
   deleteFeedAction(e){
     console.log("HI");
   let updateIndex=e.target.getAttribute('value');
-  let feed_id=e.target.getAttribute('data');
-  
+  console.log(updateIndex);
+  let feedid=e.target.getAttribute('feedid');
+  console.log("feedid :"+feedid);
   let data = JSON.parse(sessionStorage.getItem("userData"));
 
-  let postData = { user_id: data.userData.user_id, token: data.userData.token, feed_id: feed_id };
+  let postData = { user_id: data.userData.user_id, token: data.userData.token, feed_id: feedid };
+  
   if (postData) {
     PostData('feedDelete', postData).then((result) => {
      this
@@ -84,8 +86,15 @@ class Home extends Component {
 
   deleteFeed(e){
 
+    let updateIndex=e.target.getAttribute('value');
+          
+    let feed_id=e.target.getAttribute('feedId');
+    
+    if (window.confirm('Are you sure you wish to delete this Feed?')) 
+    this.deleteFeedAction(e)
 
-      confirmAlert({
+    //this.deleteFeedAction(e);
+     /* confirmAlert({
         title: '',                        
         message: 'Are you sure?',               
         childrenElement: () => '',       
@@ -93,7 +102,9 @@ class Home extends Component {
         cancelLabel: 'Cancel',                            
         onConfirm: () => this.deleteFeedAction(e),    
         onCancel: () => '',      
-      })
+
+      })   */
+
  
     
 
